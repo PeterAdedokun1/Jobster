@@ -1,14 +1,13 @@
 import React from "react";
-// import logo from "../assets/images/logo.svg";
 import main from "../assets/images/main.svg";
-import styled from "styled-components"
 import Wrapper from "../assets/wrappers/LandingPage";
-import {Logo} from "../Components";
+import { Logo } from "../Components";
+import { Link } from "react-router-dom";
 const Landing = () => {
   return (
     <Wrapper>
       <nav>
-      <Logo/>
+        <Logo />
       </nav>
       <div className="container page">
         <div className="info">
@@ -22,7 +21,7 @@ const Landing = () => {
             tempora? Quod nesciunt facere quam vel labore. Itaque perferendis
             maiores ipsam ullam modi ducimus dolorem!
           </p>
-          <button className="btn btn-hero">Login/Register</button>
+          <Link to="/register" className="btn btn-hero">Login/Register</Link>
         </div>
         <img src={main} alt="job hunt" className="img main-img" />
       </div>
@@ -30,5 +29,4 @@ const Landing = () => {
   );
 };
 
-             
 export default Landing;
