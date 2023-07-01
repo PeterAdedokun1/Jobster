@@ -4,6 +4,7 @@ import customFetch from "../../utils/axios";
 import { addUserToLocalStorage, getUserFromLocalStorage,removeUserFromLocalStorage } from "../../store/localStorage";
 const initialState = {
   isLoading: false,
+  isSideBarOpen: false,
   user: getUserFromLocalStorage(),
 };
 
@@ -34,6 +35,11 @@ export const loginUser = createAsyncThunk(
 const userSlice = createSlice({
   name: "user",
   initialState,
+  reducers: {
+    toggleSidebar: (state) => {
+      state.isSideBarOpen = !state.isSideBarOpen
+    }
+  },
   extraReducers: {
     [registerUser.pending]: (state) => {
       state.isLoading = true;
@@ -66,4 +72,5 @@ const userSlice = createSlice({
   },
 });
 
+export const {toggleSidebar} = userSlice.actions
 export default userSlice.reducer;
