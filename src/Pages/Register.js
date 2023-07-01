@@ -31,7 +31,7 @@ const Register = () => {
         navigate("/")
       },3000)
     }
-  },[user,navigate])
+  },[user])
 
   const onSubmit = (e) => {
     e.preventDefault();
