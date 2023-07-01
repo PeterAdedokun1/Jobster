@@ -2,6 +2,7 @@ import { FormRow,FormRowSelect } from "../../Components";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { clearValue, handleChange } from "../../features/job/jobSlice";
 const AddJobs = () => {
    const {
      isLoading,
@@ -27,7 +28,8 @@ const AddJobs = () => {
     const handleJobInput = (e) => {
       const name = e.target.name;
       const value = e.target.value;
-      console.log(name,value)
+      // console.log(name,value)
+      dispatch(handleChange({name,value}))
     };
   return (
     <Wrapper>
@@ -78,7 +80,7 @@ const AddJobs = () => {
             <button
               type="button"
               className="btn btn-block clear-btn"
-              onClick={() => console.log("clear values")}
+              onClick={() => dispatch(clearValue())}
             >
               clear
             </button>
