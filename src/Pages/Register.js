@@ -5,6 +5,7 @@ import Wrapper from "../assets/wrappers/RegisterPage";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser, registerUser } from "../features/user/UserSlice";
+import { useNavigate } from "react-router-dom";
 const initialState = {
   name: "",
   email: "",
@@ -15,6 +16,7 @@ const Register = () => {
   const [values, setValues] = useState(initialState);
   const { user, isLoading } = useSelector((store) => store.user);
   const dispath = useDispatch();
+  const navigate = useNavigate()
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
   };
@@ -23,6 +25,13 @@ const Register = () => {
     const value = e.target.value;
     setValues({ ...values, [name]: value });
   };
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/")
+      },3000)
+    }
+  },[user,navigate])
 
   const onSubmit = (e) => {
     e.preventDefault();
