@@ -8,14 +8,14 @@ import { logoutUser, toggleSidebar } from "../features/user/UserSlice";
 const Navbar = () => {
 const [showLogout, setSetShowLogout] = useState(false);
 
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   const { user } = useSelector((store) => store.user);
   const toggle = () => {
-    dispath(toggleSidebar());
+    dispatch(toggleSidebar());
   };
   return (
     <Wrapper>
-      <div className="nav-center">
+      <div className="nav-center" >
         <button type="button" className="toggle-btn" onClick={toggle}>
           <FaAlignLeft />
         </button>
@@ -42,7 +42,7 @@ const [showLogout, setSetShowLogout] = useState(false);
               type="button"
               className="dropdown-btn"
               onClick={() => {
-               dispath(logoutUser())
+               dispatch(logoutUser())
               }}
             >
               logout
