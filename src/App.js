@@ -4,7 +4,6 @@ import { Landing,  Error, Register } from "./Pages";
 import { Route, BrowserRouter, Routes, } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import {AddJobs,Stats,Profile,AllJobs,SharedLouyout} from "./Pages/dashboard"
 import { AddJobs, AllJobs, SharedLayout, Profile, Stats } from "./Pages/dashboard"
 function App() {
   return (
