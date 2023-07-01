@@ -27,8 +27,9 @@ const Profile = () => {
     }
     return (
       <Wrapper>
-        <form handleSubmit={handleSubmit}>
-          <h3>Profile</h3>
+        <form className="form" onSubmit={handleSubmit}>
+          <h3>profile</h3>
+
           <div className="form-center">
             <FormRow
               type="text"
@@ -55,6 +56,13 @@ const Profile = () => {
               value={userData.location}
               handleChange={handleChange}
             />
+            <button
+              className="btn btn-block"
+              type="submit"
+              disabled={isLoading}
+            >
+              {isLoading ? "Please Wait..." : "save changes"}
+            </button>
           </div>
         </form>
       </Wrapper>
