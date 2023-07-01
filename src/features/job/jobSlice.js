@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import customFetch from "../../utils/axios";
 import { logoutUser } from "../user/UserSlice";
+import { getUserFromLocalStorage } from "../../store/localStorage";
 // import { getUserFromLocalStorage } from "../../utils/localStorage";
 const initialState = {
   isLoading: false,
@@ -47,7 +48,7 @@ const jobSlice = createSlice({
     },
     clearValue: () => {
       return {
-        ...initialState,
+        ...initialState, jobLocation: getUserFromLocalStorage()?.jobLocation || ""
       };
     },
   },
