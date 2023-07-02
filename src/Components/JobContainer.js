@@ -26,7 +26,6 @@ const JobContainer = () => {
       </Wrapper>
     );
   }
-  console.log(jobs)
   return (
     <Wrapper>
       <h5>Jobs Info</h5>
