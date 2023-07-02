@@ -18,9 +18,9 @@ function App() {
         <Route
           path="/"
           element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <SharedLayout />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           }
         >
           <Route index element={<Stats />} />
@@ -29,7 +29,7 @@ function App() {
           <Route path="profile" element={<Profile />} />
         </Route>
         <Route path="register" element={<Register />} />
-        <Route path="landing" element={<Landing/>}/>
+        <Route path="landing" element={<Landing />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <ToastContainer position="top-center" />

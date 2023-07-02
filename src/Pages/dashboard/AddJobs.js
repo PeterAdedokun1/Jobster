@@ -38,7 +38,7 @@ const AddJobs = () => {
   const { user } = useSelector((store) => store.user);
   useEffect(() => {
     if (!isEditing) {
-      // dispatch(handleChange({ name: "jobLocation", value: user.location }));
+      dispatch(handleChange({ name: "jobLocation", value: user.location }));
     }
   }, []);
   return (

@@ -5,18 +5,17 @@ import { useDispatch } from "react-redux";
 import JobInfo from "./JobInfo";
 import moment from "moment/moment";
 import { deleteJob } from "../features/job/jobSlice";
-const Job = (
-  _id,
-  position,
+const Job = ({ _id,
+ position,
   company,
   jobLocation,
   jobType,
   createdAt,
-  status
+    status}
 ) => {
     const dispatch = useDispatch();
  const date = moment(createdAt).format("MMM Do, YYYY");
-
+    console.log(company,status)
   return (
     <Wrapper>
       <header>
@@ -28,10 +27,9 @@ const Job = (
       </header>
       <div className="content">
         <div className="content-center">
-          <h4>more content</h4>
-          <JobInfo icon={FaLocationArrow} text={jobLocation} />
-          <JobInfo icon={FaCalendarAlt} text={date} />
-          <JobInfo icon={FaBriefcase} text={jobType} />
+          <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
+          <JobInfo icon={<FaCalendarAlt />} text={date} />
+          <JobInfo icon={<FaBriefcase />} text={jobType} />
           <div className={`status ${status}`}>{status}</div>
         </div>
         <footer>

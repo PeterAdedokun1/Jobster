@@ -42,7 +42,7 @@ export const deleteJob = createAsyncThunk("job/deleteJob", async (jobId, thunkAP
     thunkAPI.dispatch(showLoading());
 
   try {
-    let resp = await customFetch.delete(`/jobs${jobId}`, {
+    let resp = await customFetch.delete(`/jobs/${jobId}`, {
       headers: {
         authorization: `Bearer ${thunkAPI.getState().user.user.token}`
       }
@@ -64,7 +64,7 @@ const jobSlice = createSlice({
     clearValue: () => {
       return {
         ...initialState,
-        // jobLocation: getUserFromLocalStorage()?.jobLocation || ""
+        jobLocation: getUserFromLocalStorage()?.jobLocation || ""
       };
     },
   },
