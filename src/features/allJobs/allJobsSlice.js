@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import customFetch from "../../utils/axios";
 
 const initialState = {
-  isLoading: false,
+  isLoading: true,
   jobs: [],
   totalJobs: 0,
   numOfPages: 1,
