@@ -35,7 +35,6 @@ export const loginUser = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.response.data.msg);
     }
   }
-
 );
 
 export const updateUser = createAsyncThunk(
@@ -81,7 +80,6 @@ const userSlice = createSlice({
     },
     [registerUser.fulfilled]: (state, { payload }) => {
       const { user } = payload;
-      
       state.isLoading = false;
       state.user = user;
       addUserToLocalStorage(user);

@@ -15,7 +15,7 @@ const initialState = {
 const Register = () => {
   const [values, setValues] = useState(initialState);
   const { user, isLoading } = useSelector((store) => store.user);
-  console.log(user, isLoading)
+  
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const toggleMember = () => {
@@ -32,7 +32,7 @@ const Register = () => {
         navigate("/")
       },3000)
     }
-  },[user])
+  },[user, navigate])
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -43,7 +43,6 @@ const Register = () => {
     }
     if (isMember) {
       dispatch(loginUser({ email, password }));
-      console.log(email,password)
       return;
     }
     dispatch(registerUser({name,email,password}))
