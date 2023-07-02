@@ -1,43 +1,46 @@
-import { FormRow,FormRowSelect } from "../../Components";
+import { FormRow, FormRowSelect } from "../../Components";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { clearValue, createJob, handleChange } from "../../features/job/jobSlice";
+import {
+  clearValue,
+  createJob,
+  handleChange,
+} from "../../features/job/jobSlice";
 import { useEffect } from "react";
 const AddJobs = () => {
-   const {
-     isLoading,
-     position,
-     company,
-     jobLocation,
-     jobType,
-     jobTypeOptions,
-     status,
-     statusOptions,
-     isEditing,
-     editJobId,
-   } = useSelector((store) => store.job);
+  const {
+    isLoading,
+    position,
+    company,
+    jobLocation,
+    jobType,
+    jobTypeOptions,
+    status,
+    statusOptions,
+    isEditing,
+    editJobId,
+  } = useSelector((store) => store.job);
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!position || !company || !jobLocation) {
-      toast.error("Please fill out all fields")
+      toast.error("Please fill out all fields");
       return;
     }
-    dispatch(createJob({position,company,jobLocation,jobType,status}))
-  
-  }
-    const handleJobInput = (e) => {
-      const name = e.target.name;
-      const value = e.target.value;
-      dispatch(handleChange({name,value}))
+    dispatch(createJob({ position, company, jobLocation, jobType, status }));
   };
-  const { user } = useSelector((store) => store.user)
+  const handleJobInput = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    dispatch(handleChange({ name, value }));
+  };
+  const { user } = useSelector((store) => store.user);
   useEffect(() => {
     if (!isEditing) {
-      dispatch(handleChange({name: 'jobLocation', value: user.location}))
+      // dispatch(handleChange({ name: "jobLocation", value: user.location }));
     }
-  },[])
+  }, []);
   return (
     <Wrapper>
       <form className="form">

@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import customFetch from "../../utils/axios";
 import { logoutUser } from "../user/UserSlice";
 import { getUserFromLocalStorage } from "../../store/localStorage";
-// import { getUserFromLocalStorage } from "../../utils/localStorage";
 const initialState = {
   isLoading: false,
   position: "",
@@ -48,7 +47,8 @@ const jobSlice = createSlice({
     },
     clearValue: () => {
       return {
-        ...initialState, jobLocation: getUserFromLocalStorage()?.jobLocation || ""
+        ...initialState,
+        // jobLocation: getUserFromLocalStorage()?.jobLocation || ""
       };
     },
   },

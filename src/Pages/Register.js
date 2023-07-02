@@ -15,6 +15,7 @@ const initialState = {
 const Register = () => {
   const [values, setValues] = useState(initialState);
   const { user, isLoading } = useSelector((store) => store.user);
+  console.log(user, isLoading)
   const dispatch = useDispatch();
   const navigate = useNavigate()
   const toggleMember = () => {
@@ -42,6 +43,7 @@ const Register = () => {
     }
     if (isMember) {
       dispatch(loginUser({ email, password }));
+      console.log(email,password)
       return;
     }
     dispatch(registerUser({name,email,password}))
