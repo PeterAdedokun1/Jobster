@@ -15,7 +15,6 @@ const Job = ({ _id,
 ) => {
     const dispatch = useDispatch();
  const date = moment(createdAt).format("MMM Do, YYYY");
-    console.log(company,status)
   return (
     <Wrapper>
       <header>

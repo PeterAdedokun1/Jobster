@@ -29,7 +29,15 @@ export const getAllJobs = createAsyncThunk(
     }
   }
 );
-
+export const showStats = createAsyncThunk("allJobs/", async (_, thunkAPI) => {
+  try {
+    const resp = await customFetch.get("/jobs/stats");
+    console.log(resp.data);
+    return resp.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data.msg);
+  }
+});
 const allJobsSlice = createSlice({
   name: "allJobs",
   initialState,
@@ -57,5 +65,5 @@ const allJobsSlice = createSlice({
   },
 });
 
-export const {showLoading,hideLoading} = allJobsSlice.actions
+export const { showLoading, hideLoading } = allJobsSlice.actions;
 export default allJobsSlice.reducer;
