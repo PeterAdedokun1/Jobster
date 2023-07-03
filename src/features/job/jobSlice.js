@@ -38,17 +38,14 @@ export const createJob = createAsyncThunk(
     }
   }
 );
+
 export const deleteJob = createAsyncThunk(
   "job/deleteJob",
   async (jobId, thunkAPI) => {
     thunkAPI.dispatch(showLoading());
 
     try {
-      let resp = await customFetch.delete(`/jobs/${jobId}`, {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      });
+      let resp = await customFetch.delete(`/jobs/${jobId}` );
       thunkAPI.dispatch(getAllJobs());
       return resp.data.msg;
     } catch (error) {

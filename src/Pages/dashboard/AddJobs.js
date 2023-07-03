@@ -29,21 +29,21 @@ const AddJobs = () => {
       toast.error("Please fill out all fields");
       return;
     }
-   if (isEditing) {
-     dispatch(
-       editJob({
-         jobId: editJobId,
-         job: {
-           position,
-           company,
-           jobLocation,
-           jobType,
-           status,
-         },
-       })
-     );
-     return;
-   }
+    if (isEditing) {
+      dispatch(
+        editJob({
+          jobId: editJobId,
+          job: {
+            position,
+            company,
+            jobLocation,
+            jobType,
+            status,
+          },
+        })
+      );
+      return;
+    }
     dispatch(createJob({ position, company, jobLocation, jobType, status }));
   };
   const handleJobInput = (e) => {
@@ -61,7 +61,6 @@ const AddJobs = () => {
     <Wrapper>
       <form className="form">
         <h3>{isEditing ? "edit job" : "add job"}</h3>
-
         <div className="form-center">
           {/* position */}
           <FormRow
@@ -92,7 +91,6 @@ const AddJobs = () => {
             handleChange={handleJobInput}
             list={statusOptions}
           />
-
           {/* job type */}
           <FormRowSelect
             name="jobType"
