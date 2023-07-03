@@ -22,11 +22,7 @@ export const createJob = createAsyncThunk(
   "job/createJob",
   async (job, thunkAPI) => {
     try {
-      const resp = await customFetch.post("/jobs", job, {
-        headers: {
-          authorization: `Bearer1 ${thunkAPI.getState().user.user.token}`,
-        },
-      });
+      const resp = await customFetch.post("/jobs", job, );
       thunkAPI.dispatch(clearValue());
       return resp.data;
     } catch (error) {
@@ -58,11 +54,7 @@ export const editJob = createAsyncThunk(
   "job/editJob",
   async ({ jobId, job }, thunkAPI) => {
     try {
-      const resp = await customFetch.patch(`/jobs/${jobId}`, job, {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      });
+      const resp = await customFetch.patch(`/jobs/${jobId}`, job );
       thunkAPI.dispatch(clearValue());
       return resp.data;
     } catch (error) {
