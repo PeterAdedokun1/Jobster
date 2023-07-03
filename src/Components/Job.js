@@ -5,16 +5,17 @@ import { useDispatch } from "react-redux";
 import JobInfo from "./JobInfo";
 import moment from "moment/moment";
 import { deleteJob, setEditJob } from "../features/job/jobSlice";
-const Job = ({ _id,
- position,
+const Job = ({
+  _id,
+  position,
   company,
   jobLocation,
   jobType,
   createdAt,
-    status}
-) => {
-    const dispatch = useDispatch();
- const date = moment(createdAt).format("MMM Do, YYYY");
+  status,
+}) => {
+  const dispatch = useDispatch();
+  const date = moment(createdAt).format("MMM Do, YYYY");
   return (
     <Wrapper>
       <header>
@@ -36,7 +37,19 @@ const Job = ({ _id,
             <Link
               to="/add-job"
               className="btn edit-btn"
-              onClick={() => dispatch(setEditJob({editJobId: _id, position,company,jobLocation,jobType,createdAt,status}))}
+              onClick={() =>
+                dispatch(
+                  setEditJob({
+                    editJobId: _id,
+                    position,
+                    company,
+                    jobLocation,
+                    jobType,
+                    createdAt,
+                    status,
+                  })
+                )
+              }
             >
               Edit
             </Link>
