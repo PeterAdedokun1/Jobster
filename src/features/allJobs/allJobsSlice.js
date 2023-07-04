@@ -18,17 +18,17 @@ const initialState = {
   page: 1,
   stats: {},
   monthlyApplications: [],
-    ...initialFiltersState,
+  ...initialFiltersState,
 };
 
 export const getAllJobs = createAsyncThunk(
   "allJobs/getJobs",
   async (_, thunkAPI) => {
-     const { page, search, searchStatus, searchType, sort } =
-       thunkAPI.getState().allJobs;
+    const { page, search, searchStatus, searchType, sort } =
+      thunkAPI.getState().allJobs;
     let url = `/jobs?page=${page}&status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
     if (search) {
-      url = url + `&search=${search}`
+      url = url + `&search=${search}`;
     }
     try {
       const resp = await customFetch.get(url, {
@@ -36,7 +36,7 @@ export const getAllJobs = createAsyncThunk(
           authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
         },
       });
-      console.log(resp.data)
+      console.log(resp.data);
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.msg);
@@ -63,15 +63,16 @@ const allJobsSlice = createSlice({
       state.isLoading = false;
     },
     handleChange: (state, { payload: { name, value } }) => {
-      //state.page =1 later
-      state[name] = value
+      state.page = 1;
+      state[name] = value;
     },
     changePage: (state, { payload }) => {
-      state.page = payload
+      state.page = payload;
     },
     clearFilters: (state) => {
-      return {...state, ...initialFiltersState}
-    }
+      return { ...state, ...initialFiltersState };
+    },
+    clearAllJobsState: (state) => initialState,
   },
   extraReducers: {
     [getAllJobs.pending]: (state) => {
@@ -81,7 +82,7 @@ const allJobsSlice = createSlice({
       state.isLoading = false;
       state.jobs = payload.jobs;
       state.numOfPages = payload.numOfPages;
-      state.totalJobs = payload.totalJobs
+      state.totalJobs = payload.totalJobs;
     },
 
     [getAllJobs.rejected]: (state, { payload }) => {
@@ -103,5 +104,12 @@ const allJobsSlice = createSlice({
   },
 });
 
-export const { showLoading, hideLoading , handleChange, clearFilters, changePage} = allJobsSlice.actions;
+export const {
+  showLoading,
+  hideLoading,
+  handleChange,
+  clearFilters,
+  changePage,
+  clearAllJobsState
+} = allJobsSlice.actions;
 export default allJobsSlice.reducer;
